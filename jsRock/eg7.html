@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JS Rock Accordian</title>
+</head>
+<style>
+  table {
+    border-collapse: collapse;
+    border: 1px solid gray;
+  }
+  td, th {
+    padding: 4px;
+    border: 1px solid gray;
+  }
+  tbody tr:hover {
+    background-color: rgb(163, 163, 163);
+  }
+  .selected {
+    background-color: gray;
+  }
+</style>
+<script>
+  // JSRock code starts here
+  const $$$ = {
+    onDocumentLoaded: function (func) {
+      window.onload = func;
+    },
+    ajax: async function ({ url, methodType, success, failure }) {
+      var xhr = new XMLHttpRequest();
+      xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4) {
+          if (xhr.status === 200) {
+            success(JSON.parse(xhr.responseText));
+          } else {
+            failure(JSON.parse(xhr.responseText));
+          }
+        }
+      }
+      xhr.open(methodType, url, true);
+      xhr.send();
+    },
+    grid: function(id, { model, pagination, pageSize, rowSelectionEnabled }) {
+      
+      
+      let status = {};
+      status.data = model;
+      if(pagination == true) {
+        status.pageNumber = 1;
+        status.pageSize = pageSize;
+        status.start = 0;
+        status.end = status.start + status.pageSize;
+        status.nextPage = function() {
+          if(status.pageNumber * status.pageSize < status.data.length) {
+            status.pageNumber++;
+            status.start = (status.pageNumber-1)*status.pageSize;
+            status.end = status.start+status.pageSize >= status.data.length ? status.data.length : status.start+status.pageSize
+            renderBody(status.start, status.end)
+          } else {
+            console.log('Length exceeded')
+          }
+
+        };
+        status.prevPage = function() {
+          if(status.pageNumber > 1) {
+            status.pageNumber--;
+            status.start = (status.pageNumber-1)*status.pageSize;
+            status.end = status.start+status.pageSize >= status.data.length ? status.data.length : status.start+status.pageSize
+            renderBody(status.start, status.end)
+          } else {
+            console.log('Cant be negative');
+          }
+        }
+      }
+      if(rowSelectionEnabled) {
+        status.onSelection = function selected(el) {
+          console.log(el)
+        }
+      }
+
+      let element = document.getElementById(id);
+      let obj = {};
+      let tmpLargest = 0;
+      for(let tmp of status.data) {
+        tmpLargest = Object.keys(tmp).length;
+        if(tmpLargest>Object.keys(obj)) obj = Object.keys(tmp);
+      }
+      let columns = obj;
+
+
+      
+      // creating table
+      let table = document.createElement('table');
+
+      // -------- TABLE HEAD STARTS HERE----------
+      // creating table head
+      let thead = document.createElement('thead');
+      // creating table row for heading
+      let tr = document.createElement('tr');
+      // creating table cells for heading
+      let th;
+      for(let columnName of columns) {
+        th = document.createElement('th')
+        th.innerText = columnName.charAt(0).toUpperCase()+columnName.slice(1, columnName.length);
+        // appending heading table cells to heading row
+        tr.appendChild(th);
+      }
+      // appending table heading row to table head
+      thead.appendChild(tr);
+      // appending table head to table
+      table.appendChild(thead);
+      // --------- TABLE HEAD ENDS HERE -----------
+
+      // creating table body
+      let tbody = document.createElement('tbody');
+      // --------- TABLE BODY START HERE ----------
+      function renderBody (start = 0, end = pageSize) {
+        tbody.innerHTML = '';
+        for(let i=start; i<end; i++) {
+          // creting table rows
+          let tr = document.createElement('tr');
+          for(let key of Object.keys(model[i])) {
+            // creating table cells
+            let td = document.createElement('td');
+            td.innerText = model[i][key];
+            // appending table cell to table row
+            tr.appendChild(td);
+          }
+          if(rowSelectionEnabled) {
+            tr.addEventListener('click', (ev) => {
+              document.querySelectorAll('#'+id+' tbody>tr').forEach(el => el.classList.remove('selected'));
+              tr.classList.add('selected');
+              status.onSelection(tr);
+            })
+          }
+          // adding id attribute to table row
+          tr.setAttribute("id", id+''+i);
+          // appending table row to table body
+          tbody.appendChild(tr);
+        }
+      }
+      // appending table body to table 
+      table.appendChild(tbody)
+      // --------- TABLE BODY ENDS HERE --------------
+
+      // rendering table body for the first time
+      renderBody();
+
+      // appending table to specified element
+      element.append(table);
+      return status;
+    }
+  }
+  // JSRock code ends here
+
+  const DataModel = {
+    data: []
+  }
+
+  let grid = {};
+
+  function gotoNextPage() {
+    grid.nextPage();
+  }
+
+  function gotoPrevPage() {
+    grid.prevPage();
+  }
+
+  $$$.ajax({
+    url: "one",
+    methodType: "get",
+    success: function (employees) {
+      employees.pop();
+      DataModel.data = employees;
+    },
+    failure: function (err) {
+      console.log(err)
+    }
+  })
+
+  $$$.onDocumentLoaded(() => {
+    grid = $$$.grid("someId", {
+      model: DataModel.data,
+      pagination: true,
+      pageSize: 5,
+      rowSelectionEnabled: true
+    })
+    grid.onSelection = function(el) {
+      console.log(el);
+    }
+
+  })
+
+
+</script>
+
+<body>
+  <h1>Grid</h1>
+  <div id="someId">
+
+  </div>
+  <button onclick="gotoPrevPage()" type="button">Prev</button>
+  &nbsp;
+  &nbsp;
+  &nbsp;
+  <button onclick="gotoNextPage()" type="button">Next</button>
+</body>
+
+</html>
