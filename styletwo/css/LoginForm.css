@@ -1,0 +1,17 @@
+.loginForm {
+border : 2px solid black;
+padding : 8px;
+margin: auto;
+display: table;
+margin-top: 12%;
+}
+
+.content-right-section {
+margin-left: 5px
+}
+
+
+
+input {
+margin-top: 16px
+}

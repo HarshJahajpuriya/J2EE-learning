@@ -1,0 +1,175 @@
+<!DOCTYPE HTML>
+<html lang='en'>
+
+<head>
+  <meta charset='utf-8'>
+  <title> CRUD Application (Style Three) </title>
+  <link rel='stylesheet' href='/stylethree/css/styles.css'>
+</head>
+
+<body>
+  <!-- main starts here -->
+  <div class='main-section'>
+    <!-- header starts here -->
+    <div class='header'>
+      <a href='/stylethree/index.html'><img src='/stylethree/images/logo.png' class='logo'></a>
+      <div class='brand-name'>Thinking Machines</div>
+      <div class='logout'><a href='/stylethree/logout'>Logout</a></div>
+      <div class='user-logo'>
+        <img src='/stylethree/images/user.png'></img> <span>admin</span>
+      </div>
+    </div> <!-- header ends here -->
+    <!-- content-section starts here -->
+    <div class='content-section'>
+      <!-- left-section starts here -->
+      <div class='content-left-section'>
+        <a href='/stylethree/Desingations.html'> Designations </a> <br>
+        <b> Employees </b> <br>
+        <br>
+        <a href='/stylethree/index.html'> Home </a>
+      </div>
+      <!-- left-section ends here -->
+      <!-- right-section starts here -->
+      <div class='content-right-section'>
+
+
+        <h3>Add Employee (Module)</h3>
+        <br>
+        </span>
+        <form id="employeeAddForm">
+
+
+          <input type='hidden' id='employeeId' name='employeeId'>
+          <table>
+            <tr style='height:30px'>
+              <td>
+                Name :
+              </td>
+              <td>
+                <input type='text' id='name' name='name' maxlength='35' size='36'>
+                <span id='nameErrorSection' class='error'> </span>
+              </td>
+            </tr>
+
+
+            <tr style='height:30px'>
+              <td>
+                Designation :
+              </td>
+              <td>
+                <select id='designationCode' name='designationCode'>
+                  <option value='-1'>&lt;Select Designation&gt;</option>
+
+
+                </select>
+                <span id='designationCodeErrorSection' class='error'> </span>
+              </td>
+            </tr>
+
+
+            <tr style='height:30px'>
+              <td>
+                Date Of Birth :
+              </td>
+              <td>
+                <input type='date' id='dateOfBirth' name='dateOfBirth'>
+                <span id='dateOfBirthErrorSection' class='error'> </span>
+              </td>
+            </tr>
+
+
+            <tr style='height:30px'>
+              <td>
+                Gender :
+              </td>
+
+              <td>
+                <input type='radio' id='male' name='gender' value='M'>
+                Male
+                &nbsp;&nbsp;&nbsp;
+                <input type='radio' id='female' name='gender' value='F'>
+                Female
+                <span id='genderErrorSection' class='error'> </span>
+              </td>
+            </tr>
+
+
+            <tr style='height:30px'>
+              <td>
+                Indian :
+              </td>
+              <td>
+                <input type='checkbox' id='isIndian' name='isIndian' value='Y'>
+                <span id='isIndianErrorSection' class='error'> </span>
+              </td>
+            </tr>
+
+
+            <tr style='height:30px'>
+              <td>
+                Basic salary :
+              </td>
+              <td>
+                <input type='text' id='basicSalary' name='basicSalary' maxlength='12' size='13'>
+                <span id='basicSalaryErrorSection' class='error'> </span>
+              </td>
+            </tr>
+
+            <tr style='height:30px'>
+              <td>
+                PAN Number :
+              </td>
+              <td>
+                <input type='text' id='panNumber' name='panNumber' maxlength='15' size='16'>
+                <span id='panNumberErrorSection' class='error'> </span>
+              </td>
+            </tr>
+
+
+            <tr style='height:30px'>
+              <td>
+                Aadhar Card Number :
+              </td>
+              <td>
+                <input type='text' id='aadharCardNumber' name='aadharCardNumber' maxlength='15' size='16'>
+                <span id='aadharCardNumberErrorSection' class='error'> </span>
+              </td>
+            </tr>
+
+            <tr>
+            </tr>
+
+            <tr style='height:80px'>
+              <td style='text-align:right'>
+                <button type='button' onclick="validateForm()"> Add </button>&nbsp;&nbsp;
+              </td>
+              <td style='text-align:left'>
+                <a href='/stylethree/Employees.html'>
+                  <button type='button'>Cancel</button>
+                </a>
+              </td>
+            </tr>
+          </table>
+
+
+
+
+
+
+        </form>
+      </div>
+      <!-- right-section ends here -->
+    </div> <!-- content-section ends here -->
+    <!-- footer starts here -->
+    <div class='footer'>
+      &copyThinking Machines
+    </div> <!-- footer ends here -->
+  </div> <!-- main ends here -->
+</body>
+<script>
+  const employeeId = ('${employeeId}');
+</script>
+<script src='/stylethree/js/utils.js'></script>
+<script src='/stylethree/js/EmployeeAddForm.js'></script>
+
+</html>

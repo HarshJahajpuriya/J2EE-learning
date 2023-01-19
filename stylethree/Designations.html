@@ -1,0 +1,69 @@
+<!DOCTYPE HTML>
+<html lang='en'>
+
+<head>
+  <meta charset='utf-8'>
+  <title>CRUD Application (Style Three)</title>
+  <link rel='stylesheet' href='/stylethree/css/styles.css'>
+  <link rel='stylesheet' href='/stylethree/css/index.css'>
+</head>
+
+<body>
+  <!-- main starts here -->
+  <div class='main-section'>
+    <!-- header starts here -->
+    <div class='header'>
+      <a href='/stylethree/index.html'><img src='/stylethree/images/logo.png' class='logo'></a>
+      <div class='brand-name'>Thinking Machines</div>
+      <div class='logout'><a href='/stylethree/logout'>Logout</a></div>
+      <div class='user-logo'>
+        <img src='/stylethree/images/user.png'></img> <span>admin</span>
+      </div>
+    </div> <!-- header ends here -->
+    <!-- content-section starts here -->
+    <div class='content-section'>
+      <!-- left-section starts here -->
+      <div class='content-left-section'>
+
+        <b> Designations </b> <br>
+        <a class='navs' href="/stylethree/Employees.html"> Employees </a> <br><br>
+        <a class='navs' href='/stylethree/index.html'>Home</a>
+
+      </div>
+      <!-- left-section ends here -->
+      <!-- right-section starts here -->
+      <div class='content-right-section'>
+        <div id="designations">
+          <table border='1' id="designationTable">
+            <h2>Designations</h2>
+            <tr>
+              <th colspan='4' style='text-align:right;padding:4px;'>
+                <a href='/stylethree/DesignationAddForm.html'>Add Designation</a>
+              </th>
+            </tr>
+            <tr>
+              <th style='width:60px'>S.No.</th>
+              <th style='width:200px'>Designation</th>
+              <th style='width:100px'>Edit</th>
+              <th style='width:100px'>Delete</th>
+            </tr>
+
+            <tbody id="designationsTableBody">
+
+            </tbody>
+
+          </table>
+        </div>
+
+        <!-- right-section ends here -->
+      </div> <!-- content-section ends here -->
+      <!-- footer starts here -->
+      <div class='footer'>
+        &copyThinking Machines
+      </div> <!-- footer ends here -->
+    </div> <!-- main ends here -->
+</body>
+
+<script src="/stylethree/js/utils.js"></script>
+<script src="/stylethree/js/Designations.js"></script>
+</html>

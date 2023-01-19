@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang='en'>
+<head>
+<meta charset='utf-8'>
+<title>AJAX Examples</title>
+<script>
+
+function populateDesignationsComboBox(responseData) 
+{
+var designationsComboBoxRef = document.getElementById("designationsComboBox");
+var splits = responseData.split(',');
+var obj = null;
+for(var i=0; i<splits.length; i+=2) 
+{
+obj = document.createElement("option");
+obj.value = splits[i];
+obj.text = splits[i+1];
+designationsComboBoxRef.appendChild(obj);
+}
+}
+
+function getDesginations() 
+{
+var responseData = "";
+var xhr = new XMLHttpRequest();
+xhr.onreadystatechange = function() {
+if(xhr.readyState == 4) {
+if(xhr.status == 200) {
+responseData = xhr.responseText;
+populateDesignationsComboBox(responseData);
+}
+}
+}
+xhr.open("GET", "one", true);
+xhr.send();
+}
+window.addEventListener('load', getDesginations);
+</script>
+</head>
+<body>
+<h1>AJAX Examples</h1>
+<br>
+<br>
+<h1>Get Type Request Example</h1>
+Desigations:
+<select id="designationsComboBox">
+</select>
+</body>
+</html>

@@ -1,0 +1,258 @@
+<!DOCTYPE HTML>
+<html lang='en'>
+<head>
+<meta charset='utf-8'>
+<title> CRUD Application (Style One) </title>
+</head>
+<script>
+function validateForm(form)
+{
+var isValid = true;
+var inFocus = null;
+
+form.name.value = form.name.value.trim();
+document.getElementById('nameErrorSection').innerHTML='';
+if(form.name.value.length == 0) 
+{
+isValid = false;
+inFocus = form.name;
+document.getElementById('nameErrorSection').innerHTML='&nbsp;&nbsp;&nbsp;Name Required';
+}
+
+document.getElementById('designationCodeErrorSection').innerHTML = '';
+if(form.designationCode.value == -1)
+{
+isValid = false;
+if(inFocus == null) inFocus = form.designationCode;
+document.getElementById('designationCodeErrorSection').innerHTML = '&nbsp;&nbsp;&nbsp;Select Designation';
+}
+
+document.getElementById('dateOfBirthErrorSection').innerHTML = '';
+if(form.dateOfBirth.value.length == 0)
+{
+isValid = false;
+if(inFocus == null) inFocus = form.dateOfBirth;
+document.getElementById('dateOfBirthErrorSection').innerHTML = '&nbsp;&nbsp;&nbsp;Date of Birth Required';
+}
+
+document.getElementById('genderErrorSection').innerHTML = '';
+if(form.male.checked == false && form.female.checked == false)
+{
+isValid = false;
+document.getElementById('genderErrorSection').innerHTML = '&nbsp;&nbsp;&nbsp;Select Gender';
+}
+
+document.getElementById('basicSalaryErrorSection').innerHTML = '';
+form.basicSalary.value = form.basicSalary.value.trim();
+if(form.basicSalary.value.length == 0)
+{
+isValid = false;
+if(inFocus == null) inFocus = form.basicSalary;
+document.getElementById('basicSalaryErrorSection').innerHTML = '&nbsp;&nbsp;&nbsp;Basic Salary Required';
+} else
+{
+var e = '1234567890.';
+var validBasicSalary = true;
+for(var i=0; i<basicSalary.value.length; i++)
+{
+if(e.indexOf(basicSalary.value.charAt(i)) == -1)
+{
+isValid = false;
+if(inFocus == null) inFocus = form.basicSalary;
+document.getElementById('basicSalaryErrorSection').innerHTML = '&nbsp;&nbsp;&nbsp;Invalid Basic Salary';
+validBasicSalary = false;
+break;
+}
+}
+if(validBasicSalary)
+{
+var dot = basicSalary.value.indexOf('.');
+if(dot != -1)
+{
+var fractionalPartLength = basicSalary.value.length - (dot + 1);
+alert('Fractional Part Length ' + fractionalPartLength);
+if(fractionalPartLength > 2)
+{
+isValid = false;
+if(inFocus == null) inFocus = form.basicSalary;
+document.getElementById('basicSalaryErrorSection').innerHTML = '&nbsp;&nbsp;&nbsp;Invalid Basic Salary';
+}
+}
+}
+}
+
+form.panNumber.value = form.panNumber.value.trim();
+document.getElementById('panNumberErrorSection').innerHTML = '';
+if(form.panNumber.value.length == 0)
+{
+isValid = false;
+if(inFocus == null) inFocus = form.panNumber;
+document.getElementById('panNumberErrorSection').innerHTML = '&nbsp;&nbsp;&nbsp;PAN Number Required';
+} else if(form.panNumber.value.length != 10) 
+{
+isValid = false;
+if(inFocus == null) inFocus = form.panNumber;
+document.getElementById('panNumberErrorSection').innerHTML = '&nbsp;&nbsp;&nbsp;Invalid PAN Number';
+}
+
+form.aadharCardNumber.value = form.aadharCardNumber.value.trim();
+document.getElementById('aadharCardNumberErrorSection').innerHTML = '';
+if(form.aadharCardNumber.value.length == 0)
+{
+isValid = false;
+if(inFocus == null) inFocus = form.aadharCardNumber;
+document.getElementById('aadharCardNumberErrorSection').innerHTML = '&nbsp;&nbsp;&nbsp;Aadhar Card Number Required';
+} else if(form.aadharCardNumber.value.length != 12) 
+{
+isValid = false;
+if(inFocus == null) inFocus = form.aadharCardNumber;
+document.getElementById('aadharCardNumberErrorSection').innerHTML = '&nbsp;&nbsp;&nbsp;Invalid Aadhar Card Number';
+}
+
+inFocus.focus();
+return isValid;
+}
+</script>
+<body>
+<!-- main starts here -->
+<div style='width:90hw;height:94vh;border:1px solid black'>
+<!-- header starts here -->
+<div style='width:90hw;height:auto;margin:5px;border:1px solid black'>
+<a href='/styleone/index.html'><img src='/styleone/images/logo.png' style='float:left'></a>
+<div style='height:60px;font-size:40px;margin:5px;margin-bottom:0'>Thinking Machines</div>
+</div> <!-- header ends here -->
+<!-- content-section starts here -->
+<div style='width:90hw;height:74vh;margin:5px;border:1px solid white'>
+<!-- left-section starts here -->
+<div style='width:auto;height:70.8vh;margin:5px;border:1px solid black;float:left;padding:4px 8px'>
+<a href='/styleone/designationsView'> Designations </a> <br>
+<b> Employees </b>
+</div>
+<!-- left-section ends here -->
+<!-- right-section starts here -->
+<div style='width:auto;height:72vh;margin:5px;margin-left:110px;border:1px solid black;'>
+<h3>Add Employee (Module)</h3>
+<br>
+<form method='POST' action='/styleone/addEmployee' onsubmit='return validateForm(this)'>
+<table>
+<tr style='height:30px'>
+<td>
+Name : 
+</td>
+<td>
+<input type='text' id='name' name='name' maxlength='35' size='36'>
+<span id='nameErrorSection' style='color:red'> </span>
+</td>
+</tr>
+
+
+<tr style='height:30px'>
+<td>
+Designation : 
+</td>
+<td>
+<select id='designationCode' name='designationCode'>
+<option value='-1'>&lt;Select Designation&gt;</option>
+<option value='1'>Manager</option>
+<option value='2'>Driver</option>
+<option value='3'>Watchman</option>
+<option value='4'>Cook</option>
+</select>
+<span id='designationCodeErrorSection' style='color:red'> </span>
+</td>
+</tr>
+
+
+<tr style='height:30px'>
+<td>
+Date Of Birth : 
+</td>
+<td>
+<input type='date' id='dateOfBirth' name='dateOfBirth'>
+<span id='dateOfBirthErrorSection' style='color:red'> </span>
+</td>
+</tr>
+
+
+<tr style='height:30px'>
+<td>
+Gender : 
+</td>
+<td>
+<input type='radio' id='male' name='gender' >
+Male
+&nbsp;&nbsp;&nbsp;
+<input type='radio' id='female' name='gender'>
+Female
+<span id='genderErrorSection' style='color:red'> </span>
+</td>
+</tr>
+
+
+<tr style='height:30px'>
+<td>
+Indian : 
+</td>
+<td>
+<input type='checkbox' id='isIndian' name='isIndian'>
+<span id='isIndianErrorSection' style='color:red'> </span>
+</td>
+</tr>
+
+
+<tr style='height:30px'>
+<td>
+Basic salary : 
+</td>
+<td>
+<input type='text' id='basicSalary' name='basicSalary' maxlength='12' size='13'>
+<span id='basicSalaryErrorSection' style='color:red'> </span>
+</td>
+</tr>
+
+<tr style='height:30px'>
+<td>
+PAN Number : 
+</td>
+<td>
+<input type='text' id='panNumber' name='panNumber' maxlength='15' size='16'>
+<span id='panNumberErrorSection' style='color:red'> </span>
+</td>
+</tr>	
+
+
+<tr style='height:30px'>
+<td>
+Aadhar Card Number : 
+</td>
+<td>
+<input type='text' id='aadharCardNumber' name='aadharCardNumber' maxlength='15' size='16'>
+<span id='aadharCardNumberErrorSection' style='color:red'> </span>
+</td>
+</tr>
+
+<tr>
+</tr>
+
+<tr style='height:80px'>
+<td style='text-align:right'>
+<button type='submit'> Add </button>&nbsp;&nbsp;
+</td>
+<td style='text-align:left'>
+<a href='/styleone/employeesView'>
+<button type='button'>Cancel</button>
+</a>
+</td>
+</tr>
+</table>
+</form>
+</div>
+<!-- right-section ends here -->
+</div> <!-- content-section ends here -->
+<!-- footer starts here -->
+<div style='width:90hw;height:auto;margin:5px;margin-top:20px;border:1px solid white;font-size:20px;text-align:center'>
+&copyThinking Machines
+</div> <!-- footer ends here -->
+</div> <!-- main ends here -->
+</body>
+</html>

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JS Rock Accordian</title>
+</head>
+<style>
+  .accordian {
+    width: 100%
+  }
+
+  .accordianHeading {
+    padding: 4px;
+    margin: 4px;
+    background-color: rgb(73, 77, 77);
+    color: whitesmoke;
+    cursor: pointer;
+  }
+
+  .accordianContent {
+    margin: 4px;
+    padding: 4px;
+    margin-bottom: 8px;;
+    border: 1px solid gray
+  }
+
+  .opened {
+    background-color: rgb(226, 226, 226);    
+    color: black;
+    border-bottom: 2px solid gray;
+  }
+
+</style>
+<script>
+  // JSRock code starts here
+  const $$$ = {
+    onDocumentLoaded : function(func) {
+      window.onload = func;
+    },
+    toAccordian: function(id) {
+      let accordian = document.getElementById(id);
+      accordian.classList.add("accordian")
+      let headings = document.querySelectorAll("#"+id+">h3")
+      headings.forEach((heading, idx) => {
+        heading.classList.add("accordianHeading")
+        heading.addEventListener('click', (el) => {
+          contents.forEach(c => c.style.display="none")
+          if(!heading.classList.contains("opened")) {
+            headings.forEach(h => h.classList.remove("opened"))
+            heading.classList.add("opened")
+            contents[idx].style.display = "block"
+          } else {
+            headings.forEach(h => h.classList.remove("opened"))
+          }
+        })
+      });
+      let contents = document.querySelectorAll("#"+id+">div")
+      contents.forEach(content => {
+        content.classList.add("accordianContent");
+        content.style.display = 'none';
+      })
+    }
+  }
+  // JSRock code ends here
+
+  $$$.onDocumentLoaded(function() {
+    $$$.toAccordian("myAccordian")
+  })
+</script>
+<body>
+  <h1>Accordion</h1>
+  <div id="myAccordian">
+    <h3>Heading 1</h3>
+    <div>
+      Content 1 Content 1 Content 1 Content 1 Content 1 <br>
+      Content 1 Content 1 Content 1 Content 1 Content 1 <br>
+      Content 1 Content 1 Content 1 Content 1 Content 1 <br>
+      Content 1 Content 1 Content 1 Content 1 Content 1 <br>
+      Content 1 Content 1 Content 1 Content 1 Content 1 <br>
+      Content 1 Content 1 Content 1 Content 1 Content 1 <br>
+      Content 1 Content 1 Content 1 Content 1 Content 1 <br>
+    </div>
+    
+    <h3>Heading 2</h3>
+    <div>
+      Content 2 Content 2 Content 2 Content 2 Content 2 <br>
+      Content 2 Content 2 Content 2 Content 2 Content 2 <br>
+      Content 2 Content 2 Content 2 Content 2 Content 2 <br>
+      Content 2 Content 2 Content 2 Content 2 Content 2 <br>
+      Content 2 Content 2 Content 2 Content 2 Content 2 <br>
+      Content 2 Content 2 Content 2 Content 2 Content 2 <br>
+      Content 2 Content 2 Content 2 Content 2 Content 2 <br>
+    </div>
+    
+    <h3>Heading 3</h3>
+    <div>
+      Content 3 Content 3 Content 3 Content 3 Content 3 <br>
+      Content 3 Content 3 Content 3 Content 3 Content 3 <br>
+      Content 3 Content 3 Content 3 Content 3 Content 3 <br>
+      Content 3 Content 3 Content 3 Content 3 Content 3 <br>
+      Content 3 Content 3 Content 3 Content 3 Content 3 <br>
+      Content 3 Content 3 Content 3 Content 3 Content 3 <br>
+      Content 3 Content 3 Content 3 Content 3 Content 3 <br>
+    </div>
+  </div>
+</body>
+</html>

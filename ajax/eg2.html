@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang='en'>
+<head>
+<meta charset='utf-8'>
+<title>AJAX Examples</title>
+<script>
+
+function getDesignation() 
+{
+var designationSpan = document.getElementById("designationSpan");
+var code = document.getElementById("code").value;
+var responseData = "";
+var xhr = new XMLHttpRequest();
+xhr.onreadystatechange = function() {
+if(xhr.readyState == 4) {
+if(xhr.status == 200) {
+responseData = xhr.responseText;
+designationSpan.innerHTML = responseData.split(",")[1];
+}
+}
+}
+
+var requestURL = "two?code="+encodeURI(code);
+xhr.open("GET", requestURL, true);
+xhr.send();
+}
+</script>
+</head>
+<body>
+<h1>AJAX Examples</h1>
+<br>
+<br>
+<h1>Get Type Request with Parameter Example</h1>
+Enter Code: <input id="code" type="text"> &nbsp; <button type="button" onclick="getDesignation()">Get Designation</button>
+<br>
+Designation: <span id="designationSpan"></span>
+</body>
+</html>

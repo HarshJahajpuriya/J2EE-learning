@@ -1,0 +1,164 @@
+<!DOCTYPE HTML>
+<html lang='en'>
+
+<head>
+  <meta charset='utf-8'>
+  <title> CRUD Application (Style four) </title>
+</head>
+
+<body>
+  <!-- main starts here -->
+  <div style='width:90hw;height:94vh;border:1px solid black'>
+    <!-- header starts here -->
+    <div style='width:90hw;height:auto;margin:5px;border:1px solid black'>
+      <a href='/stylefour/index.html'><img src='/stylefour/images/logo.png' style='float:left'></a>
+      <div style='height:60px;font-size:40px;margin:5px;margin-bottom:0'>Thinking Machines</div>
+    </div> <!-- header ends here -->
+    <!-- content-section starts here -->
+    <div style='width:90hw;height:74vh;margin:5px;border:1px solid white'>
+      <!-- left-section starts here -->
+      <div style='width:auto;height:70.8vh;margin:5px;border:1px solid black;float:left;padding:4px 8px'>
+        <a href='/stylefour/Designations.html'> Designations </a> <br>
+        <b> Employees </b>
+      </div>
+      <!-- left-section ends here -->
+      <!-- right-section starts here -->
+      <div style='width:auto;height:72vh;margin:5px;margin-left:110px;border:1px solid black;'>
+        <h3>Add Employee (Module)</h3>
+        <br>
+        <form method='POST' action='/stylefour/addEmployee' onsubmit='return validateForm(this)' id="employeeAddForm">
+          <table>
+            <tr style='height:30px'>
+              <td>
+                Name :
+              </td>
+              <td>
+                <input type='text' id='name' name='name' maxlength='35' size='36'>
+                <span id='nameErrorSection' style='color:red'> </span>
+              </td>
+            </tr>
+
+
+            <tr style='height:30px'>
+              <td>
+                Designation :
+              </td>
+              <td>
+                <select id='designationCode' name='designationCode'>
+                  <option value='-1'>&lt;Select Designation&gt;</option>
+                  <option value='78'>Chartered Accountant</option>
+                  <option value='77'>Chief Executive Officer</option>
+                  <option value='79'>CS</option>
+                  <option value='4'>CTO</option>
+                  <option value='6'>Developer</option>
+                  <option value='71'>Doctor</option>
+                  <option value='11'>Driver</option>
+                  <option value='8'>Electrician</option>
+                  <option value='1'>Executive Manager</option>
+                  <option value='7'>Manager</option>
+                  <option value='94'>Teacher</option>
+                  <option value='95'>Team lead</option>
+                  <option value='101'>Test</option>
+                  <option value='96'>Test 1</option>
+                  <option value='97'>Test 2</option>
+                </select>
+                <span id='designationCodeErrorSection' style='color:red'> </span>
+              </td>
+            </tr>
+
+
+            <tr style='height:30px'>
+              <td>
+                Date Of Birth :
+              </td>
+              <td>
+                <input type='date' id='dateOfBirth' name='dateOfBirth' value='1999-12-26'>
+                <span id='dateOfBirthErrorSection' style='color:red'> </span>
+              </td>
+            </tr>
+
+
+            <tr style='height:30px'>
+              <td>
+                Gender :
+              </td>
+              <td>
+                <input type='radio' id='male' name='gender' value='M'>
+                Male
+                &nbsp;&nbsp;&nbsp;
+                <input type='radio' id='female' name='gender' value='F'>
+                Female
+                <span id='genderErrorSection' style='color:red'> </span>
+              </td>
+            </tr>
+
+
+            <tr style='height:30px'>
+              <td>
+                Indian :
+              </td>
+              <td>
+                <input type='checkbox' id='isIndian' name='isIndian' value='Y'>
+                <span id='isIndianErrorSection' style='color:red'> </span>
+              </td>
+            </tr>
+
+
+            <tr style='height:30px'>
+              <td>
+                Basic salary :
+              </td>
+              <td>
+                <input type='text' id='basicSalary' name='basicSalary' maxlength='12' size='13'>
+                <span id='basicSalaryErrorSection' style='color:red'> </span>
+              </td>
+            </tr>
+
+            <tr style='height:30px'>
+              <td>
+                PAN Number :
+              </td>
+              <td>
+                <input type='text' id='panNumber' name='panNumber' maxlength='15' size='16'>
+                <span id='panNumberErrorSection' style='color:red'> </span>
+              </td>
+            </tr>
+
+
+            <tr style='height:30px'>
+              <td>
+                Aadhar Card Number :
+              </td>
+              <td>
+                <input type='text' id='aadharCardNumber' name='aadharCardNumber' maxlength='15' size='16'>
+                <span id='aadharCardNumberErrorSection' style='color:red'> </span>
+              </td>
+            </tr>
+
+            <tr>
+            </tr>
+
+            <tr style='height:80px'>
+              <td style='text-align:right'>
+                <button type='submit'> Add </button>&nbsp;&nbsp;
+              </td>
+              <td style='text-align:left'>
+                <a href='/stylefour/Employees.html'>
+                  <button type='button'>Cancel</button>
+                </a>
+              </td>
+            </tr>
+          </table>
+        </form>
+      </div>
+      <!-- right-section ends here -->
+    </div> <!-- content-section ends here -->
+    <!-- footer starts here -->
+    <div
+      style='width:90hw;height:auto;margin:5px;margin-top:20px;border:1px solid white;font-size:20px;text-align:center'>
+      &copyThinking Machines
+    </div> <!-- footer ends here -->
+  </div> <!-- main ends here -->
+</body>
+<script src="/stylefour/js/EmployeeAddForm.js"></script>
+</html>

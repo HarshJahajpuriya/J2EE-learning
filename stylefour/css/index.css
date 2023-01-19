@@ -1,0 +1,10 @@
+.navs {
+  cursor: pointer;
+  border-bottom: 1px solid gray;
+}
+
+.navs:hover {
+  color: dodgerblue;
+  border-bottom: 1px solid dodgerblue;
+}
+

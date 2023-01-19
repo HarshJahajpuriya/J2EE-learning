@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JS Rock Accordian</title>
+</head>
+<style>
+  .accordian {
+    width: 100%
+  }
+
+  .accordianHeading {
+    padding: 4px;
+    margin: 4px;
+    background-color: rgb(73, 77, 77);
+    color: whitesmoke;
+    cursor: pointer;
+  }
+
+  .accordianContent {
+    margin: 4px;
+    padding: 4px;
+    margin-bottom: 8px;;
+    border: 1px solid gray
+  }
+
+  .opened {
+    background-color: rgb(226, 226, 226);    
+    color: black;
+    border-bottom: 2px solid gray;
+  }
+
+</style>
+<script>
+  // JSRock code starts here
+  const $$$ = {
+    selectByAttr: function(attrName, attrVal) {
+      let selectedElements = [];
+      document.querySelectorAll(`[${attrName}]`).forEach((el) => {
+        if(el.attributes[attrName].value===attrVal) selectedElements.push(el)
+      })
+      return selectedElements;
+    }
+  }
+  // JSRock code ends here
+
+  function doSomething() {
+    console.log($$$.selectByAttr("attr","yes"));
+  }
+  
+</script>
+<body>
+  <h1>Selection based on custom attributes</h1>
+  <div>
+    <div id="div1" attr="yes">
+      <h3>Heading 1</h3>
+      Content 1 Content 1 Content 1 Content 1 Content 1 <br>
+      Content 1 Content 1 Content 1 Content 1 Content 1 <br>
+      Content 1 Content 1 Content 1 Content 1 Content 1 <br>
+      Content 1 Content 1 Content 1 Content 1 Content 1 <br>
+      Content 1 Content 1 Content 1 Content 1 Content 1 <br>
+      Content 1 Content 1 Content 1 Content 1 Content 1 <br>
+      Content 1 Content 1 Content 1 Content 1 Content 1 <br>
+    </div>
+    
+    <div id="div2">
+      <h3>Heading 2</h3>
+      Content 2 Content 2 Content 2 Content 2 Content 2 <br>
+      Content 2 Content 2 Content 2 Content 2 Content 2 <br>
+      Content 2 Content 2 Content 2 Content 2 Content 2 <br>
+      Content 2 Content 2 Content 2 Content 2 Content 2 <br>
+      Content 2 Content 2 Content 2 Content 2 Content 2 <br>
+      Content 2 Content 2 Content 2 Content 2 Content 2 <br>
+      Content 2 Content 2 Content 2 Content 2 Content 2 <br>
+    </div>
+    
+    <div id="div3" attr="yes">
+      <h3>Heading 3</h3>
+      Content 3 Content 3 Content 3 Content 3 Content 3 <br>
+      Content 3 Content 3 Content 3 Content 3 Content 3 <br>
+      Content 3 Content 3 Content 3 Content 3 Content 3 <br>
+      Content 3 Content 3 Content 3 Content 3 Content 3 <br>
+      Content 3 Content 3 Content 3 Content 3 Content 3 <br>
+      Content 3 Content 3 Content 3 Content 3 Content 3 <br>
+      Content 3 Content 3 Content 3 Content 3 Content 3 <br>
+    </div>
+
+    <div id="div4" attr="no">
+      <h3>Heading 4</h3>
+      Content 4 Content 4 Content 4 Content 4 Content 4 <br>
+      Content 4 Content 4 Content 4 Content 4 Content 4 <br>
+      Content 4 Content 4 Content 4 Content 4 Content 4 <br>
+      Content 4 Content 4 Content 4 Content 4 Content 4 <br>
+      Content 4 Content 4 Content 4 Content 4 Content 4 <br>
+      Content 4 Content 4 Content 4 Content 4 Content 4 <br>
+      Content 4 Content 4 Content 4 Content 4 Content 4 <br>
+      Content 4 Content 4 Content 4 Content 4 Content 4 <br>
+    </div>
+    <br>
+    <button type="button" onclick="doSomething()">Click Me</button>
+  </div>
+</body>
+</html>

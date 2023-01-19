@@ -1,0 +1,128 @@
+.error 
+{
+color: red;
+}
+.main-section
+{
+width:90hw;
+height:94vh;
+border:1px solid black;
+}
+.header 
+{
+width:90hw;
+height:auto;
+margin:5px;
+border:1px solid black;
+}
+.logo
+{
+float:left;
+}
+.brand-name
+{
+height:60px;
+font-size:40px;
+margin:5px;
+margin-bottom:0;
+display:inline-block;
+}
+.logout 
+{
+color: red;
+float: right;
+margin: 20px;
+}
+.content-section
+{
+width:90hw;
+height:74vh;
+margin:5px;
+border:1px solid white;
+}
+.content-left-section
+{
+width:auto;
+height:70.8vh;
+margin:5px;
+border:1px solid black;
+float:left;
+padding:4px 8px;
+}
+.content-right-section
+{
+width:auto;
+height:71.45vh;
+margin:5px;
+margin-left:110px;
+border:1px solid black;
+overflow:scroll;
+}
+.footer
+{
+width:90hw;
+height:auto;
+margin:5px;
+margin-top:20px;
+border:1px solid white;
+font-size:20px;
+text-align:center;
+}
+
+.user-logo {
+float: right;
+margin-top: 14px;
+display: inline-block;
+width: 100px;
+}
+
+.user-logo img {
+width: 30px;
+height: 30px;
+}
+
+.user-logo span {
+display: inline-block;
+position: fixed;
+top: 36px;
+}
+
+
+#backdrop {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  height: 100vh;
+  background-color: rgba(42, 42, 42, 0.728);
+  text-align: center;
+}
+
+#notificationDialog {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  border: 2px solid gray;
+  border-radius: 5px;
+  padding: 10px;
+  background-color: whitesmoke;
+  width: 400px;
+  height: auto;
+}
+
+#notification {
+  padding: 10px;
+  border-bottom: 1px solid gray;
+}
+
+#buttons {
+  padding: 10px;
+  word-spacing: 20px;
+}
+
+#button a {
+  margin: 8px;
+}

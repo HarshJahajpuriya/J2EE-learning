@@ -1,0 +1,97 @@
+<!DOCTYPE HTML>
+<html lang='en'>
+
+<head>
+  <meta charset='utf-8'>
+  <title>CRUD Application (Style Four)</title>
+  <link rel='stylesheet' href='/stylefour/css/styles.css'>
+  <link rel='stylesheet' href='/stylefour/css/index.css'>
+  <link rel='stylesheet' href='/stylefour/css/Employees.css'>
+</head>
+
+<body>
+  <!-- main starts here -->
+  <div class='main-section'>
+    <!-- header starts here -->
+    <div class='header'>
+      <a href='/stylefour/index.html'><img src='/stylefour/images/logo.png' class='logo'></a>
+      <div class='brand-name'>Thinking Machines</div>
+      <div class='logout'><a href='/stylefour/logout'>Logout</a></div>
+      <div class='user-logo'>
+        <img src='/stylefour/images/user.png'></img> <span>admin</span>
+      </div>
+    </div> <!-- header ends here -->
+    <!-- content-section starts here -->
+    <div class='content-section'>
+      <!-- left-section starts here -->
+      <div class='content-left-section'>
+
+        <a class='navs' href="/stylefour/Designations.html"> Designations </a> <br>
+        <b> Employees </b> <br>
+        <br>
+        <a class='navs' href='/stylefour/index.html'>Home</a>
+
+      </div>
+      <!-- left-section ends here -->
+      <!-- right-section starts here -->
+      <div class='content-right-section'>
+
+        <div id="employees">
+          <h2>Employees</h2>
+          <table border='1' id="employeeGridTable">
+            <tr>
+              <th colspan='6' class='employee-table-header'>
+                <a href='/stylefour/EmployeeAddForm.html'>Add Employee</a>
+              </th>
+            </tr>
+            <tr>
+              <th class='employee-table-sno-column'>S.No.</th>
+              <th class='employee-table-id-column'>Id.</th>
+              <th class='employee-table-name-column'>Name</th>
+              <th class='employee-table-designation-column'>Designation</th>
+              <th class='employee-table-editOption-column'>Edit</th>
+              <th class='employee-table-deleteOption-column'>Delete</th>
+            </tr>
+
+            <tbody id="employeesTableBody">
+            </tbody>
+
+
+          </table>
+
+          <div class='employee-detail-section'>
+            <label class='employee-detail-section-label'>Details: -</label>
+            <table class='employee-detail-table'>
+              <tr>
+                <td>Employee Id: <span id='detailPanel_employeeId'></span></td>
+                <td>Name: <span id='detailPanel_name'></span></td>
+                <td>Designation: <span id='detailPanel_designation'></span></td>
+              </tr>
+              <tr>
+                <td>Date Of Birth: <span id='detailPanel_dateOfBirth'></span></td>
+                <td>Gender: <span id='detailPanel_gender'></span></td>
+                <td>Is Indian: <span id='detailPanel_isIndian'></span></td>
+              </tr>
+              <tr>
+                <td>Basic Salary: <span id='detailPanel_basicSalary'></span></td>
+                <td>Pan Number: <span id='detailPanel_panNumber'></span></td>
+                <td>Aadhar Card Number: <span id='detailPanel_aadharCardNumber'></span></td>
+              </tr>
+            </table>
+          </div>
+
+        </div>
+
+        <!-- right-section ends here -->
+      </div> <!-- content-section ends here -->
+      <!-- footer starts here -->
+      <div class='footer'>
+        &copyThinking Machines
+      </div> <!-- footer ends here -->
+    </div> <!-- main ends here -->
+</body>
+
+<script src="/stylefour/js/utils.js"></script>
+<script src="/stylefour/js/Employees.js"></script>
+
+</html>

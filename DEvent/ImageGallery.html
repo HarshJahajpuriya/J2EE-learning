@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>D2Event Management</title>
+  <link rel="stylesheet" href="./css/index.css">
+  <link rel="stylesheet" href="./css/image-gallery.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="./js/image-gallery.js"></script>
+</head>
+
+<body style=" font-family: myFont;">
+  <!-- Header -->
+  <div class="header-div">
+    <div class="nav-container-div">
+      <nav class="navbar navbar-light">
+        <a style="padding: 0;" class="navbar-brand" href="/DEvent/">
+          <div class='logo-div'>
+          </div>
+        </a>
+        <div class="links-container">
+          <a href='/DEvent/ImageGallery.html'><div><B>Images</B></div></a>
+          <a href='/DEvent/VideoGallery.html'><div><b>Videos</B></div></a>
+          <a href='/DEvent/AboutUs.html'><div><b>About us</B></div></a>
+        </div>
+      </nav>
+    </div>
+  </div>
+  <!-- Main container -->
+  <div class="main-container-div">
+    <div id="main-container-div-backdrop" class='main-container-div-backdrop'>
+      <div id="display-image-backdrop" onclick="hideImage()">
+        <div style="flex: 1;"></div>
+        <div id='display-image-div' style="flex: 1; display: flex; flex-direction: column;">
+          <div style="flex: 1;"></div>
+          <img id='display-image-img' style="flex: 1;"></img>
+          <div style="flex: 1;"></div>
+        </div>
+        <div style="flex: 1;"></div>
+      </div>
+      <div id='gallery'>
+        <div id="image-gallery">
+          <div class="row">
+            <div class="column">
+              <img src="./images/1.jpg">
+              <img src="./images/4.jpg">
+              <img src="./images/5.jpg">
+              <img src="./images/4.jpg">
+              <img src="./images/5.jpg">
+            </div>
+            <div class="column">
+              <img src="./images/2.jpg">
+              <img src="./images/3.jpg">
+              <img src="./images/6.jpg">
+              <img src="./images/4.jpg">
+              <img src="./images/5.jpg">
+            </div>
+
+            <div class="column">
+              <img src="./images/7.jpg">
+              <img src="./images/8.jpg">
+              <img src="./images/4.jpg">
+              <img src="./images/5.jpg">
+            </div>
+            <div class="column">
+              <img src="./images/9.jpg">
+              <img src="./images/10.jpg">
+              <img src="./images/4.jpg">
+              <img src="./images/5.jpg">
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+
+
+  </div>
+  <!-- Footer -->
+  <div id='footer-div'>
+
+  </div>
+</body>
+
+</html>

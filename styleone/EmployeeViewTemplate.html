@@ -1,0 +1,158 @@
+
+<!DOCTYPE HTML>
+<html lang='en'>
+<head>
+<meta charset='utf-8'>
+<title> CRUD Application (Style One) </title>
+<script>
+function Employee()
+{
+this.employeeId='';
+this.name='';
+this.designationCode=0;
+this.desingation='';
+this.dateOfBirth='';
+this.gender='';
+this.isIndian='';
+this.basicSalary=0;
+this.panNumber='';
+this.aadharCardNumber='';
+}
+var selectedRow = null;
+var employees = [];
+var employee = new Employee();
+employee.employeeId='A10001';
+employee.name='Mahesh Gupta';
+employee.designationCode=9;
+employee.designation='Builder';
+employee.dateOfBirth='26/12/1999';
+employee.gender='Male';
+employee.isIndian=true;
+employee.basicSalary=500000;
+employee.panNumber='BWEPJ7706C';
+employee.aadharCardNumber='310371262849';
+employees[0] = employee;
+employee = new Employee();
+employee.employeeId='A10002';
+employee.name='Ramesh Sharma';
+employee.designationCode=9;
+employee.designation='Liftman';
+employee.dateOfBirth='26/10/1990';
+employee.gender='Male';
+employee.isIndian=true;
+employee.basicSalary=100000;
+employee.panNumber='BWEPJ7706C';
+employee.aadharCardNumber='310371262849';
+employees[1] = employee;
+
+function selectEmployee(row, employeeId)
+{
+if(selectedRow != null)
+{
+selectedRow.style.background='white';
+selectedRow.style.color='black';
+}
+row.style.background='#7f8185';
+row.style.color='white';
+selectedRow = row;
+for(var i=0; i<employees.length; i++)
+{
+if(employees[i].employeeId==employeeId)
+{
+break;
+}
+}
+var emp = employees[i];
+document.getElementById('detailPanel_employeeId').innerHTML = emp.employeeId;
+document.getElementById('detailPanel_name').innerHTML = emp.name;
+document.getElementById('detailPanel_designation').innerHTML = emp.designation;
+document.getElementById('detailPanel_dateOfBirth').innerHTML = emp.dateOfBirth;
+document.getElementById('detailPanel_basicSalary').innerHTML = emp.basicSalary;
+document.getElementById('detailPanel_isIndian').innerHTML = emp.isIndian===true?'Yes':'No';
+document.getElementById('detailPanel_panNumber').innerHTML = emp.panNumber;
+document.getElementById('detailPanel_aadharCardNumber').innerHTML = emp.aadharCardNumber;
+document.getElementById('detailPanel_gender').innerHTML = emp.gender;
+}
+</script>
+</head>
+<body>
+<!-- main starts here -->
+<div style='width:90hw;height:94vh;border:1px solid black'>
+<!-- header starts here -->
+<div style='width:90hw;height:auto;margin:5px;border:1px solid black'>
+<a href='/styleone/index.html'><img src='/styleone/images/logo.png' style='float:left'></a>
+<div style='height:60px;font-size:40px;margin:5px;margin-bottom:0'>Thinking Machines</div>
+</div> <!-- header ends here -->
+<!-- content-section starts here -->
+<div style='width:90hw;height:74vh;margin:5px;border:1px solid white'>
+<div style='width:auto;height:70.8vh;margin:5px;border:1px solid black;float:left;padding:4px 8px'>
+<a href='/styleone/designationsView'> Designations </a> <br>
+<b> Employees </b>
+</div>
+<!-- right section starts here -->
+<div style='width:auto;height:71.46vh;margin:5px;margin-left:110px;border:1px solid black;'>
+<!-- right section upper part starts here -->
+<div style='width:auto;height:45vh;margin:5px;border:1px solid black;overflow:scroll;padding:5px'>
+<table border='1'>
+<h2>Designations</h2>
+<tr>
+<th colspan='6' style='text-align:right;padding:4px;'>
+<a href='/styleone/getAddEmployeeForm'>Add Employee</a>
+</th>
+</tr>
+<tr>
+<th style='width:60px'>S.No.</th>
+<th style='width:200px'>Id.</th>
+<th style='width:200px'>Name</th>
+<th style='width:200px'>Designation</th>
+<th style='width:100px'>Edit</th>
+<th style='width:100px'>Delete</th>
+</tr>
+<tr style='cursor:pointer' onclick='selectEmployee(this, "A10001")'>
+<td style='text-align:right'>1</td>
+<td>A10001</td>
+<td>Mahesh Gupta</td>
+<td>Builder</td>
+<td style='text-align:center'><a href='/styleone/editEmployee?employeeId="A10001"'>Edit</a></td>
+<td style='text-align:center'><a href='/styleone/confirmDeleteEmployee?employeeId="A10001"'>Delete</a></td>
+</tr>
+<tr style='cursor:pointer' onclick='selectEmployee(this, "A10002")'>
+<td style='text-align:right'>2</td>
+<td>A10002</td>
+<td>Ramesh Sharma</td>
+<td>Clerk</td>
+<td style='text-align:center'><a href='/styleone/editEmployee?employeeId="A10001"'>Edit</a></td>
+<td style='text-align:center'><a href='/styleone/confirmDeleteEmployee?employeeId="A10001"'>Delete</a></td>
+</tr>
+</table>
+</div> <!-- right section upper part ends here -->
+<!-- right section lower part starts here -->
+<div style='width:auto;height:20vh;margin:5px;border:1px solid black;padding:5px;'>
+<label style='background-color:gray;color:white;padding: 0 5px'>Details: -</label>
+<table style='width:100%'>
+<tr>
+<td>Employee Id: <span id='detailPanel_employeeId'></span></td>
+<td>Name: <span id='detailPanel_name'></span></td>
+<td>Designation: <span id='detailPanel_designation'></span></td>
+</tr>
+<tr>
+<td>Date Of Birth: <span id='detailPanel_dateOfBirth'></span></td>
+<td>Gender: <span id='detailPanel_gender'></span></td>
+<td>Is Indian: <span id='detailPanel_isIndian'></span></td>
+</tr>
+<tr>
+<td>Basic Salary: <span id='detailPanel_basicSalary'></span></td>
+<td>Pan Number: <span id='detailPanel_panNumber'></span></td>
+<td>Aadhar Card Number: <span id='detailPanel_aadharCardNumber'></span></td>
+</tr>
+</table>
+</div> <!-- right section lower part ends here -->
+</div> <!-- right section ends here -->
+</div> <!-- content-section ends here -->
+<!-- footer starts here -->
+<div style='width:90hw;height:auto;margin:5px;margin-top:20px;border:1px solid white;font-size:20px;text-align:center'>
+&copyThinking Machines
+</div> <!-- footer ends here -->
+</div> <!-- main ends here -->
+</body>
+</html>

@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Modal</title>
+</head>
+<style>
+  .modal {
+    display: block;
+    position: absolute;
+    left: calc(50% - 150px);
+    top: calc(50% - 100px);
+    width: 300px;
+    height: 200px;
+    background: whitesmoke;
+    border: 2px solid gray;
+    border-radius: 5px;
+  }
+
+  .modal-header {
+    width: 100%;
+    height: 24px;
+    background-color: rgb(192, 190, 190);
+    border-bottom: 1px solid gray;
+    text-align: center;
+    padding-top: 4px;
+    display: inline-block;
+  }
+
+  .modal-close {
+    width: 22px;
+    height: 22px;
+    position: absolute;
+    right: 0;
+    display: inline-block;
+    cursor: pointer;
+  }
+
+  .modal-close>img {
+    width: 20px;
+    height: 20px;
+  }
+
+  .backdrop {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.3);
+    z-index: 101;
+    display: none;
+  }
+
+  .active {
+    display: block;
+  }
+
+</style>
+<script>
+  // JSRock code starts here
+  $$$ = {
+    "modal": function(id) {
+      document.querySelector(".modal-content").append(document.getElementById(id).cloneNode(true));
+      document.getElementById("backdrop").classList.add("active");
+    }
+  }
+  function closeModal() {
+    document.getElementById("backdrop").classList.remove("active");
+    document.querySelector(".modal-content").innerHTML = "";
+  }
+  // JSRock code ends here
+
+
+  // Code written by JSRock user
+  function showXYZ() {
+    $$$.modal("xyz");
+  }
+  function showPQR() {
+    $$$.modal("pqr");
+  }
+</script>
+
+<body>
+  <div id="backdrop" class="backdrop">
+    <div class="modal">
+      <div class="modal-header">
+        Header
+        <div class="modal-close" onclick="closeModal()">
+          <img src="images/cross.png" alt="" srcset="">          
+        </div>
+      </div>
+      <div class="modal-content"></div>
+    </div>
+  </div>
+
+  <h1>MODAL</h1>
+  <br>
+  <br>
+  <button type="button" onclick="showXYZ()">Show XYZ</button>
+  <br>
+  <br>
+  <button type="button" onclick="showPQR()">Show PQR</button>
+
+  <div id="xyz">
+    <h1>Cool</h1>
+    <h3>Whatever</h3>
+    <b>Great</b>
+  </div>
+
+  <br>
+  <br>
+  <br>
+
+  <table id="pqr">
+    <tr><td>Cell 1</td> <td>Cell 11</td></tr>
+    <tr><td>Cell 2</td> <td>Cell 22</td></tr>
+    <tr><td>Cell 3</td> <td>Cell 33</td></tr>
+    <tr><td>Cell 4</td> <td>Cell 44</td></tr>
+    <tr><td>Cell 5</td> <td>Cell 55</td></tr>
+  </table>
+</body>
+</html>

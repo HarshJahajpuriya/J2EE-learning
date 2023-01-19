@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang='en'>
+<head>
+<meta charset='utf-8'>
+<title>AJAX Examples</title>
+<script>
+function saveData() 
+{
+
+var detailsDiv = document.getElementById("detailsDiv");
+var firstName = document.getElementById("firstName").value;
+var lastName = document.getElementById("lastName").value;
+var age = document.getElementById("age").value;
+var responseData = "";
+var xhr = new XMLHttpRequest();
+xhr.onreadystatechange = function() 
+{
+if(this.readyState==4 && this.status==200) 
+{
+responseData = this.responseText;
+detailsDiv.innerHTML = responseData;
+}
+}
+var dataToSend = "firstName="+encodeURI(firstName);
+dataToSend += "&lastName="+encodeURI(lastName);
+dataToSend += "&age="+encodeURI(age);
+xhr.open("POST", "three", true);
+xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+xhr.send(dataToSend);
+}
+</script>
+</head>
+<body>
+<h1>AJAX Examples</h1>
+<br>
+<br>
+<h1>Post Type Request Example</h1>
+First name: <input id="firstName" type="text"> 
+<br>
+Last name: <input id='lastName' type='text'>
+<br>
+Age: <input id='age' type='text'>
+<br>
+<button type="button" onclick="saveData()">Save</button>
+<br>
+<br>
+Details:
+<div id="detailsDiv"></div>
+</body>
+</html>

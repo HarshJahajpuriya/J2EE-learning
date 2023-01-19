@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang='en'>
+
+<head>
+  <meta charset='utf-8'>
+  <title>AJAX Examples</title>
+  <script>
+
+    // ------------------------ 1 ------------------------
+
+    // var $$$ = {
+    // ajax: function({
+    // url,
+    // methodType,
+    // success,
+    // failure
+    // }) {
+    // var xhr = new XMLHttpRequest();
+    // xhr.onreadystatechange = function() {
+    // if(xhr.readyState == 4) {
+    // if(xhr.status == 200) {
+    // success(JSON.parse(xhr.responseText));
+    // } else {
+    // failure(JSON.parse(xhr.responseText));
+    // }
+    // }
+    // }
+    // xhr.open(methodType, url, true);
+    // xhr.send();
+    // }
+    // }
+
+    // LIBRARY ENDS HERE
+
+    // function populateDesignationsComboBox(designations) 
+    // {
+    // var designationsComboBoxRef = document.getElementById("designationsComboBox");
+    // for(let designation of designations) {
+    // obj = document.createElement("option");
+    // obj.value = designation.code;
+    // obj.text = designation.title;
+    // designationsComboBoxRef.appendChild(obj);
+    // }
+    // }
+
+    // function getDesginations() 
+    // {
+    // $$$.ajax({
+    // url: "one",
+    // methodType: "GET",
+    // success: function(response) {
+    // console.log(response)
+    // populateDesignationsComboBox(response)
+    // },
+    // failure: function(error) {
+    // console.log(error)
+    // }
+    // });
+    // }
+    // window.addEventListener('load', getDesginations);
+
+
+    // ------------------------ 2 ------------------------
+
+    function $$$(parameter) {
+      var el = document.getElementById(parameter);
+      return {
+        fillComboBox: function ({dataSource = [], text, value, firstOption}) {
+          if (firstOption) {
+            obj = document.createElement("option");
+            obj.text = firstOption.text;
+            obj.value = firstOption.value;
+            el.insertAdjacentElement("beforeend", obj)
+          }
+          for (let data of dataSource) {
+            obj = document.createElement("option");
+            obj.text = data[text];
+            obj.value = data[value];
+            el.insertAdjacentElement("beforeend", obj)
+          }
+        }
+      };
+    }
+
+    $$$.ajax = async function ({url, methodType, success, failure}) {
+      var xhr = new XMLHttpRequest();
+      xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4) {
+          if (xhr.status === 200) {
+            success(JSON.parse(xhr.responseText));
+          } else {
+            failure(JSON.parse(xhr.responseText));
+          }
+        }
+      }
+      xhr.open(methodType, url, true);
+      xhr.send();
+    }
+
+    // LIBRARY ENDS HERE
+
+    function populateDesignationsComboBox(designations) {
+      $$$("designationsComboBox").fillComboBox({
+        dataSource: designations,
+        text: "title",
+        value: "code",
+        firstOption: {
+          text: "<Select Designation>",
+          value: -1
+        }
+      });
+    }
+
+    function getDesginations() {
+      $$$.ajax({
+        url: "one",
+        methodType: "GET",
+        success: function (response) {
+          populateDesignationsComboBox(response)
+        },
+        failure: function (error) {
+          console.log(error)
+        }
+      });
+    }
+    window.addEventListener('load', getDesginations);
+  </script>
+</head>
+
+<body>
+  <h1>AJAX Examples</h1>
+  <br>
+  <br>
+  <h1>Get Type Request Example</h1>
+  Desigations:
+  <select id="designationsComboBox">
+  </select>
+</body>
+
+</html>

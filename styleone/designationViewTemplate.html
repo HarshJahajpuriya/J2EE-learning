@@ -1,0 +1,51 @@
+<!DOCTYPE HTML>
+<html lang='en'>
+<head>
+<meta charset='utf-8'>
+<title> CRUD Application (Style One) </title>
+</head>
+<body>
+
+<!-- main starts here -->
+<div style='width:90hw;height:94vh;border:1px solid black'>
+<!-- header starts here -->
+<div style='width:90hw;height:auto;margin:5px;border:1px solid black'>
+<img src='/styleone/images/logo.png' style='float:left'>
+<div style='height:60px;font-size:40px;margin:5px;margin-bottom:0'>Thinking Machines</div>
+</div> <!-- header ends here -->
+<!-- content-section starts here -->
+<div style='width:90hw;height:74vh;margin:5px;border:1px solid white'>
+<div style='width:auto;height:70.8vh;margin:5px;border:1px solid black;float:left;padding:4px 8px'>
+<b> Designations </b> <br>
+<a href='/styleone/employees'> Employees </a>
+</div>
+<div style='width:auto;height:72vh;margin:5px;margin-left:110px;border:1px solid black;overflow:scroll;'>
+<table border='1'>
+<h2>Designations</h2>
+<tr>
+<th colspan='4' style='text-align:right;padding:4px;'>
+<a href='/styleone/addDesignations.html'>Add Designation</a>
+</th>
+</tr>
+<tr>
+<th style='width:60px'>S.No.</th>
+<th style='width:200px'>Designation</th>
+<th style='width:100px'>Edit</th>
+<th style='width:100px'>Delete</th>
+</tr>
+<tr>
+<td style='text-align:right'>1</td>
+<td>Manager</td>
+<td style='text-align:center'><a href='/styleone/editDesignation?code=1'>Edit</a></td>
+<td style='text-align:center'><a href='/styleone/confirmDeleteDesignation?code=1'>Delete</a></td>
+</tr>
+</table>
+</div>
+</div> <!-- content-section ends here -->
+<!-- footer starts here -->
+<div style='width:90hw;height:auto;margin:5px;margin-top:20px;border:1px solid white;font-size:20px;text-align:center'>
+&copyThinking Machines
+</div> <!-- footer ends here -->
+</div> <!-- main ends here -->
+</body>
+</html>

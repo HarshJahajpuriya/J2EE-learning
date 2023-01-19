@@ -1,0 +1,1 @@
+javac -cp c:\tomcat9\lib\*;c:\tomcat9\webapps\stylefour\WEB-INF\lib\*;c:\tomcat9\webapps\stylefour\WEB-INF\classes;. *.java
