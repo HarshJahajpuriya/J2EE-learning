@@ -82,19 +82,46 @@
       };
     }
 
-    $$$.ajax = async function ({url, methodType, success, failure}) {
+    $$$.ajax = async function (jsonObject) {
+      var url = jsonObject["url"];
+      var methodType = jsonObject["methodType"]
+      var success = jsonObject["success"]
+      var failure = jsonObject["failure"]
+      
+      if(!url) throw Error("'url' porperty is missing in call to $$$.ajax")
+      if((typeof url) != "string") throw Error("'url' property should be of type 'string' in call to $$$.ajax")
+
+      if(! methodType) {
+        methodType = "GET";
+      } else {
+        if((typeof methodType)!== "string") throw Error("'methodType' property should be of type 'string' in call to $$$.ajax")
+        methodType = methodType.toUpperCase();
+        if(! ["GET", "POST"].includes(methodType)) throw Error("'methodType' should be GET/POST in call to $$$.ajax")
+      }
+      if(success) {
+        if((typeof success) != "function") throw Error("'success' should be a function in call to $$$.ajax")
+      }
+      if(failure) {
+        if((typeof failure) != "function") throw Error("'failure' should be a function in call to $$$.ajax")
+      }
+
       var xhr = new XMLHttpRequest();
       xhr.onreadystatechange = function () {
         if (xhr.readyState === 4) {
-          if (xhr.status === 200) {
-            success(JSON.parse(xhr.responseText));
+          if (xhr.status === 200) {            
+            if(success) success(JSON.parse(xhr.responseText));
+            return;
           } else {
-            failure(JSON.parse(xhr.responseText));
+            if(failure) failure();
           }
         }
       }
       xhr.open(methodType, url, true);
-      xhr.send();
+      if(methodType === "GET") {
+        xhr.send();
+      } else if(methodType === "POST") {
+
+      }
     }
 
     // LIBRARY ENDS HERE
@@ -118,8 +145,8 @@
         success: function (response) {
           populateDesignationsComboBox(response)
         },
-        failure: function (error) {
-          console.log(error)
+        failure: function () {
+          alert("Some problem")
         }
       });
     }
